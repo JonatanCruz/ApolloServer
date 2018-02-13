@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Para authentication
+gem 'devise', '~> 4.4.1'
 # Para hacer consultas sobre http
 gem 'graphql', '~> 1.7.11'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -29,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
