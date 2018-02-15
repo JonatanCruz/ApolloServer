@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Para Autorization
+gem 'pundit', '~> 1.1.0'
 # Para authentication
 gem 'devise', '~> 4.4.1'
 # Para hacer consultas sobre http
