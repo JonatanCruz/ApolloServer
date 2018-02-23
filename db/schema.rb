@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220190731) do
+ActiveRecord::Schema.define(version: 20180223230133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
+    t.string "user_name", null: false
+    t.string "name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.string "street", default: "", null: false
+    t.string "number", default: "", null: false
+    t.string "region", default: "", null: false
+    t.string "country", default: "", null: false
+    t.integer "age", default: 0
+    t.boolean "gender", default: false
+    t.integer "phone", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -26,8 +36,19 @@ ActiveRecord::Schema.define(version: 20180220190731) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "states_id"
+    t.index ["email"], name: "index_people_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
+    t.index ["states_id"], name: "index_people_on_states_id"
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string "state_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "people", "states", column: "states_id"
 end

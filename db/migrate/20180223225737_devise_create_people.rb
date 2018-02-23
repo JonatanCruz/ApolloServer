@@ -1,8 +1,21 @@
 # frozen_string_literal: true
 
-class AddDeviseToUsers < ActiveRecord::Migration[5.1]
-  def self.up
-    create_table :users do |t|
+class DeviseCreatePeople < ActiveRecord::Migration[5.1]
+  def change
+    create_table :people do |t|
+
+      ## Person Information
+      t.string :user_name,          null: false, defailt: ""
+      t.string :name,               null: false, default: ""
+      t.string :last_name,          null: false, default: ""
+      t.string :street,             null: false, default: ""
+      t.string :number,             null: false, default: ""
+      t.string :region,             null: false, default: ""
+      t.string :country,            null: false, default: ""
+      t.integer :age,               default: 0
+      t.boolean :gender,            default: false
+      t.integer :phone,             null: false
+
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -33,19 +46,12 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.1]
       # t.datetime :locked_at
 
 
-      # Uncomment below if timestamps were not included in your original model.
-      # t.timestamps null: false
+      t.timestamps null: false
     end
 
-    add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
-    # add_index :users, :unlock_token,         unique: true
-  end
-
-  def self.down
-    # By default, we don't want to make any assumption about how to roll back a migration when your
-    # model already existed. Please edit below which fields you would like to remove in this migration.
-    raise ActiveRecord::IrreversibleMigration
+    add_index :people, :email,                unique: true
+    add_index :people, :reset_password_token, unique: true
+    # add_index :people, :confirmation_token,   unique: true
+    # add_index :people, :unlock_token,         unique: true
   end
 end
