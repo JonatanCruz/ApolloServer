@@ -10,4 +10,12 @@ Types::QueryType = GraphQL::ObjectType.define do
       "Hello World!"
     }
   end
+
+  field :users do
+    type types[UserType]
+    description 'Show table Users'
+    resolve ->(obj, args, ctx){
+      User.all
+    }
+  end
 end
