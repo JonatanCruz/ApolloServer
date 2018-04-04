@@ -10,4 +10,8 @@ Types::QueryType = GraphQL::ObjectType.define do
       "Hello World!"
     }
   end
+
+  field :allStates, types[Types::StateType] do
+    resolve -> (obj, args, ctx){ State.all }
+  end
 end
